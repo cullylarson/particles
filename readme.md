@@ -1,3 +1,3 @@
 # particles
 
-> A simple particle simulator library and web app for Javascript.
+> A simple JavaScript particle simulator library and web app.
