@@ -1,11 +1,3 @@
-import Standard from "particles/properties/Standard"
+import ParticleMaker from "./tools/ParticleMaker"
 
-const particle = Standard({
-    posX: 10,
-    posY: 20,
-    dirX: 2,
-    dirY: 2,
-    velocity: 20,
-})
-
-console.log(particle.toString())
+const particles = ParticleMaker(10, [1, 100], [1, 100], [1, 10])

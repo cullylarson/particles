@@ -23,6 +23,8 @@
     "immutable": "^3.7.5",
     "lodash": "^3.10.1",
     "path": "^0.12.7",
+    "three": "^0.73.0",
+    "vector2d": "^2.1.0",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0"
   }
