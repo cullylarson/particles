@@ -4,14 +4,19 @@ import {default as RandomUniform, RandomUniformInt} from "./../util/RandomUnifor
 
 export default function(numParticles, posXRange, posYRange, velRange) {
     return Array.apply(null, {length: numParticles}).map(() => {
-        const directionUnit = RandomUnitVector()
+        const velocityUnit = RandomUnitVector()
+        const velocityMag = RandomUniform(velRange[0], velRange[1])
 
         return Standard({
-            posX: RandomUniformInt(posXRange[0], posXRange[1]),
-            posY: RandomUniformInt(posYRange[0], posYRange[1]),
-            velocity: RandomUniform(velRange[0], velRange[1]),
-            dirX: directionUnit[0],
-            dirY: directionUnit[1],
+            position: {
+                x: RandomUniformInt(posXRange[0], posXRange[1]),
+                y: RandomUniformInt(posYRange[0], posYRange[1])
+            },
+
+            velocity: {
+                x: velocityUnit[0] * velocityMag,
+                y: velocityUnit[1] * velocityMag,
+            },
         })
     })
 }

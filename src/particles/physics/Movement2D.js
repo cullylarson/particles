@@ -1,5 +1,5 @@
-const computeComponentPosition = (positionComponent, directionComp, velocity, velocityFactor) => {
-    return positionComponent + directionComp * velocity * velocityFactor;
+const computeComponentPosition = (positionComponent, velocityComponent, velocityFactor) => {
+    return positionComponent + velocityComponent * velocityFactor;
 }
 
 export default (options) => {
@@ -9,26 +9,21 @@ export default (options) => {
     }
 
     return (particle) => {
-        // if no velocity, position, or direction, then don't do anything
+        // if no velocity or position, then don't do anything
         if(
             !particle.has("velocity") ||
-            !particle.has("dirX") ||
-            !particle.has("dirY") ||
-            !particle.has("posX") ||
-            !particle.has("posY")
+            !particle.has("position")
         ) return particle
 
         return particle
             .set("posX", computeComponentPosition(
-                particle.get("posX"),
-                particle.get("dirX"),
-                particle.get("velocity"),
+                particle.get(["position", "x"]),
+                particle.get(["velocity", "x"]),
                 options.velocityFactor
             ))
             .set("posY", computeComponentPosition(
-                particle.get("posY"),
-                particle.get("dirY"),
-                particle.get("velocity"),
+                particle.get(["position", "y"]),
+                particle.get(["velocity", "y"]),
                 options.velocityFactor
             ))
     }

@@ -1,6 +1,8 @@
 import Property from "particles/Property"
 
 export default Property({
-    posX: 0,
-    posY: 0,
+    position:  {
+        x: 0,
+        y: 0,
+    }
 })
