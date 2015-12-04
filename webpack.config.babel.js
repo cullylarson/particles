@@ -13,7 +13,11 @@ export default {
             {
                 test: path.join(__dirname, 'src'),
                 loader: 'babel',
-            }
+            },
+            {
+                test: /\.scss$/,
+                loaders: ["style", "css?sourceMap", "sass?sourceMap"]
+            },
         ]
     },
     devtool: 'source-map',
