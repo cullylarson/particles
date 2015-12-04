@@ -1,11 +1,11 @@
 import Standard from "particles/properties/Standard"
-import RandomUnitVector from "./../util/RandomUnitVector"
+import RandomVector from "./../util/RandomVector"
 import {default as RandomUniform, RandomUniformInt} from "./../util/RandomUniform"
 
-export default function(numParticles, posXRange, posYRange, velRange) {
+export default function(numParticles, posXRange, posYRange, velMagnitudeRange) {
     return Array.apply(null, {length: numParticles}).map(() => {
-        const velocityUnit = RandomUnitVector()
-        const velocityMag = RandomUniform(velRange[0], velRange[1])
+        const velocityMag = RandomUniform(velMagnitudeRange[0], velMagnitudeRange[1])
+        const velocity = RandomVector(velocityMag)
 
         return Standard({
             position: {
@@ -14,8 +14,8 @@ export default function(numParticles, posXRange, posYRange, velRange) {
             },
 
             velocity: {
-                x: velocityUnit[0] * velocityMag,
-                y: velocityUnit[1] * velocityMag,
+                x: velocity[0],
+                y: velocity[1],
             },
         })
     })
