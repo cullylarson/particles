@@ -2,7 +2,7 @@ import THREE from "three"
 
 export default (particle, size, color) => {
     const mesh = new THREE.Mesh(
-        new THREE.SphereGeometry( size, 32, 32 ),
+        new THREE.SphereGeometry( size, 8, 6 ),
         new THREE.MeshBasicMaterial( {color: color} )
     )
 
