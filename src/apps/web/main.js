@@ -1,24 +1,26 @@
 import "./style/main.scss"
 import {Map} from "immutable"
+import {compose} from "lodash"
 import PIXI from "pixi.js"
 import ParticleMaker from "./tools/ParticleMaker"
 import SceneMaker from "./tools/SceneMaker"
 import ParticleArtist from "./visualize/ParticleArtist"
 import Movement2D from "particles/physics/Movement2D"
 import BounceBox from "particles/physics/BounceBox"
-import {compose} from "lodash"
+import FuzzyForce from "particles/physics/FuzzyForce"
 
 window.onload = () => setTimeout(() => {
     const width = window.innerWidth
     const height = window.innerHeight
 
-    const particles = ParticleMaker(100, [0, width-1], [0, height-1], [1, 10])
+    const particles = ParticleMaker(100, [0, width-1], [0, height-1], [1, 3])
     const pGraphics = particles.reduce((carry, p) => {
         return carry.set(p.get("id"), new PIXI.Graphics())
     }, new Map())
 
     const physics = compose(
         Movement2D(),
+        FuzzyForce(),
         BounceBox({
             left: 0,
             right: width-1,
@@ -38,7 +40,7 @@ window.onload = () => setTimeout(() => {
             sceneInfo.renderer.render( sceneInfo.stage )
 
             const newPs = ps.map((p) => {
-                return physics(p)
+                return physics({particle: p, particles: ps}).particle
             })
 
             requestAnimationFrame( render(newPs) )

@@ -4,11 +4,13 @@ import Velocity from "particles/properties/Velocity"
 import Color from "particles/properties/Color"
 import Size from "particles/properties/Size"
 import Id from "particles/properties/Id"
+import Fuzziness from "particles/properties/Fuzziness"
 
 export default Properties(
-    Position2D({}),
-    Velocity({}),
-    Color({}),
-    Size({}),
-    Id({})
+    Position2D(),
+    Velocity(),
+    Color(),
+    Size(),
+    Id(),
+    Fuzziness()
 )
