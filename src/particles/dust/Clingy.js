@@ -5,12 +5,14 @@ import Color from "particles/properties/Color"
 import Size from "particles/properties/Size"
 import Id from "particles/properties/Id"
 import Fuzziness from "particles/properties/Fuzziness"
+import Hardness from "particles/properties/Hardness"
 
 export default Properties(
+    Id(),
     Position2D(),
     Velocity(),
-    Color(),
-    Size(),
-    Id(),
-    Fuzziness()
+    Color({color: 0x75b08a}),
+    Size({size: 2}),
+    Fuzziness({ fuzziness: -5 }),
+    Hardness({ hardness: 10 })
 )

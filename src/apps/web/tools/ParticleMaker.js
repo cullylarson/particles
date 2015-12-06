@@ -1,14 +1,14 @@
-import Standard from "particles/properties/Standard"
 import RandomVector from "particles/util/RandomVector"
 import RandomKey from "particles/util/RandomKey"
+import {List} from "immutable"
 import {default as RandomUniform, RandomUniformInt} from "particles/util/RandomUniform"
 
-export default function(numParticles, posXRange, posYRange, velMagnitudeRange) {
-    return Array.apply(null, {length: numParticles}).map(() => {
+export default function(TheKind, options, numParticles, posXRange, posYRange, velMagnitudeRange) {
+    return Array.apply(null, {length: numParticles}).reduce((carry) => {
         const velocityMag = RandomUniform(velMagnitudeRange[0], velMagnitudeRange[1])
         const velocity = RandomVector(velocityMag)
 
-        return Standard({
+        return carry.push(TheKind({
             id: RandomKey(20),
 
             position: {
@@ -20,6 +20,8 @@ export default function(numParticles, posXRange, posYRange, velMagnitudeRange) {
                 x: velocity[0],
                 y: velocity[1],
             },
-        })
-    })
+
+            ...options,
+        }))
+    }, new List())
 }

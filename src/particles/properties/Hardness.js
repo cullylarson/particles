@@ -1,5 +1,5 @@
 import Property from "particles/Property"
 
 export default Property({
-    fuzziness: 0,
+    hardness: 0,
 })
