@@ -26,8 +26,8 @@ window.onload = () => setTimeout(() => {
 
 
     const render = () => {
-        requestAnimationFrame( render );
-        sceneInfo.renderer.render( sceneInfo.scene, sceneInfo.camera );
+        requestAnimationFrame( render )
+        sceneInfo.renderer.render( sceneInfo.scene, sceneInfo.camera )
     }
     render()
 }, 1)

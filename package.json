@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Particle simulator",
   "scripts": {
+    "test": "eslint src",
     "dev": "webpack-dev-server --progress --colors --content-base www/",
     "clean": "rm www/app/*"
   },

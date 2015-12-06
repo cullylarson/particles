@@ -1,5 +1,5 @@
 const computeComponentPosition = (positionComponent, velocityComponent, velocityFactor) => {
-    return positionComponent + velocityComponent * velocityFactor;
+    return positionComponent + velocityComponent * velocityFactor
 }
 
 export default (options) => {
