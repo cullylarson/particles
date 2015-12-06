@@ -1,16 +1,16 @@
-import THREE from "three"
+import PIXI from "pixi.js"
 
-export default (canvas, width, height) => {
-    const scene = new THREE.Scene()
-    const camera = new THREE.OrthographicCamera( width / - 2, width / 2, height / 2, height / - 2, 1, 10 )
-    camera.position.z = 10
+export default (width, height) => {
+    const renderer = PIXI.autoDetectRenderer(width, height, { antialias: true })
+    const stage = new PIXI.Container()
+    stage.interactive = true;
 
-    var renderer = new THREE.WebGLRenderer({canvas: canvas})
-    renderer.setSize( width, height )
+    const graphics = new PIXI.Graphics()
+    stage.addChild(graphics);
 
     return {
         renderer: renderer,
-        scene: scene,
-        camera: camera,
+        stage: stage,
+        graphics: graphics,
     }
 }

@@ -4,31 +4,26 @@ import SceneMaker from "./tools/SceneMaker"
 import ParticleArtist from "./visualize/ParticleArtist"
 
 window.onload = () => setTimeout(() => {
-    const widthRange = [
-        -1*window.innerWidth/2,
-        window.innerWidth/2
-    ]
+    const width = window.innerWidth
+    const height = window.innerHeight
 
-    const heightRange = [
-        -1*window.innerHeight/2,
-        window.innerHeight/2
-    ]
-
-    const particles = ParticleMaker(10, widthRange, heightRange, [1, 10])
+    const particles = ParticleMaker(10, [0, width-1], [0, height-1], [1, 10])
 
     const sceneInfo = SceneMaker(
-        document.getElementById("the-universe"),
-        window.innerWidth,
-        window.innerHeight
+        width,
+        height
     )
 
-    particles.map(p => sceneInfo.scene.add(ParticleArtist(p, 3, 0xff0000)))
+    document.getElementById("the-universe").appendChild(sceneInfo.renderer.view)
+
+    particles.map(p => ParticleArtist(sceneInfo.graphics, p, 3, 0xff0000))
 
 
     const render = () => {
+        sceneInfo.renderer.render( sceneInfo.stage )
         requestAnimationFrame( render )
-        sceneInfo.renderer.render( sceneInfo.scene, sceneInfo.camera )
     }
-    render()
+
+    requestAnimationFrame( render )
 }, 1)
 
