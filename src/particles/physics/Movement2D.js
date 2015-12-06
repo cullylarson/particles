@@ -16,12 +16,12 @@ export default (options) => {
         ) return particle
 
         return particle
-            .set("posX", computeComponentPosition(
+            .setIn(["position", "x"], computeComponentPosition(
                 particle.get("position").get("x"),
                 particle.get("velocity").get("x"),
                 options.velocityFactor
             ))
-            .set("posY", computeComponentPosition(
+            .setIn(["position", "y"], computeComponentPosition(
                 particle.get("position").get("y"),
                 particle.get("velocity").get("y"),
                 options.velocityFactor

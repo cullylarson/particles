@@ -5,12 +5,8 @@ export default (width, height) => {
     const stage = new PIXI.Container()
     stage.interactive = true;
 
-    const graphics = new PIXI.Graphics()
-    stage.addChild(graphics);
-
     return {
         renderer: renderer,
-        stage: stage,
-        graphics: graphics,
+        stage: stage
     }
 }
