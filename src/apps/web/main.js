@@ -13,7 +13,7 @@ window.onload = () => setTimeout(() => {
     const width = window.innerWidth
     const height = window.innerHeight
 
-    const particles = ParticleMaker(100, [0, width-1], [0, height-1], [1, 3])
+    const particles = ParticleMaker(10, [0, width-1], [0, height-1], [1, 4])
     const pGraphics = particles.reduce((carry, p) => {
         return carry.set(p.get("id"), new PIXI.Graphics())
     }, new Map())

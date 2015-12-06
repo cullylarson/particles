@@ -47,7 +47,7 @@ export default (options) => {
         if(
             !particle.has("velocity") ||
             !particle.has("position")
-        ) return particle
+        ) return { particle: particle, particles: particles }
 
         return {
             particle: compose(bounceHorizontal(options), bounceVerticle(options))(particle),
