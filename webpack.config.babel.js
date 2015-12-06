@@ -5,8 +5,9 @@ import path from "path"
 export default {
     entry: './src/apps/web/main.js',
     output: {
-        path: path.join(__dirname, "www"),
-        filename: 'app.js',
+        path: path.join(__dirname, "www", "app"),
+        filename: "app.js",
+        publicPath: "app",
     },
     module: {
         loaders: [
