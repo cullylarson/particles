@@ -1,9 +1,10 @@
 import "./style/main.scss"
 import {Map, List} from "immutable"
-import {compose} from "lodash"
+import {compose, lift} from "ramda"
 import PIXI from "pixi.js"
 import ParticleMaker from "./tools/ParticleMaker"
 import SceneMaker from "./tools/SceneMaker"
+import EvenlyDistribute from "./tools/EvenlyDistribute"
 import ParticleArtist from "./visualize/ParticleArtist"
 import Clingy from "particles/dust/Clingy"
 import Bruiser from "particles/dust/Bruiser"
@@ -16,9 +17,10 @@ window.onload = () => setTimeout(() => {
     const width = window.innerWidth
     const height = window.innerHeight
 
-    const particles = new List()
-        .concat(ParticleMaker(Clingy, {}, 20, [0, width-1], [0, height-1], [1, 3]))
-        .concat(ParticleMaker(Bruiser, {}, 50, [0, width-1], [0, height-1], [1, 3]))
+    const particles = EvenlyDistribute(new List()
+        .concat(ParticleMaker(Clingy, {}, 50, [0, width-1], [0, height-1], [1, 2]))
+        .concat(ParticleMaker(Bruiser, {}, 50, [0, width-1], [0, height-1], [1, 2])), width, height)
+
     const pGraphics = particles.reduce((carry, p) => {
         return carry.set(p.get("id"), new PIXI.Graphics())
     }, new Map())
