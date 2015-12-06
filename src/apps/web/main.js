@@ -15,9 +15,9 @@ window.onload = () => setTimeout(() => {
     const width = window.innerWidth
     const height = window.innerHeight
 
-    const particles =
-        ParticleMaker(Clingy, {}, 50, [0, width-1], [0, height-1], [1, 4])
-        .concat(ParticleMaker(Bruiser, {}, 50, [0, width-1], [0, height-1], [1, 4]))
+    const particles = new List()
+        .concat(ParticleMaker(Clingy, {}, 20, [0, width-1], [0, height-1], [1, 3]))
+        .concat(ParticleMaker(Bruiser, {}, 50, [0, width-1], [0, height-1], [1, 3]))
     const pGraphics = particles.reduce((carry, p) => {
         return carry.set(p.get("id"), new PIXI.Graphics())
     }, new Map())

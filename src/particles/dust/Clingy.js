@@ -13,6 +13,6 @@ export default Properties(
     Velocity(),
     Color({color: 0x75b08a}),
     Size({size: 2}),
-    Fuzziness({ fuzziness: -5 }),
-    Hardness({ hardness: 10 })
+    Fuzziness({ fuzziness: -3 }),
+    Hardness({ hardness: 8 })
 )

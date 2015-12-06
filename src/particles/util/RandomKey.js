@@ -7,7 +7,7 @@ export default (size) => {
     size = size || 20
 
     return Array.apply(null, {length: size}).reduce((carry) => {
-            const idx = RandomUniformInt(0, numOptions)
-            return carry + options.substr(idx,1)
-        }, "")
+        const idx = RandomUniformInt(0, numOptions)
+        return carry + options.substr(idx,1)
+    }, "")
 }

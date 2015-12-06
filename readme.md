@@ -11,3 +11,12 @@
 % webpack
 % open www/index.html
 ```
+
+## Development Setup
+
+```
+% git clone git@github.com:cullylarson/particles.git
+% cd particles
+% npm install
+% npm run dev
+```
