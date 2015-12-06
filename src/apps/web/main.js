@@ -9,6 +9,7 @@ import Clingy from "particles/dust/Clingy"
 import Bruiser from "particles/dust/Bruiser"
 import Movement2D from "particles/physics/Movement2D"
 import BounceBox from "particles/physics/BounceBox"
+import TollBounceBox from "particles/physics/TollBounceBox"
 import FuzzyForce from "particles/physics/FuzzyForce"
 
 window.onload = () => setTimeout(() => {
@@ -25,7 +26,7 @@ window.onload = () => setTimeout(() => {
     const physics = compose(
         Movement2D(),
         FuzzyForce(),
-        BounceBox({
+        TollBounceBox({
             left: 0,
             right: width-1,
             top: 0,
